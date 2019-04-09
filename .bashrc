@@ -112,5 +112,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# display git branch name
+source ~/git-prompt.sh
+
 # custom
-PS1='\[\e[0;37m\][\u@\[\e[0;33m\]\h\[\e[0;37m\]:\W]\n\$ '
+PS1='\[\e[0;37m\][\u@\[\e[0;33m\]\h\[\e[0;37m\]:\W\[\e[1;35m\]$(__git_ps1 " (%s)")\[\e[1;37m\]]\n\$ '
