@@ -98,8 +98,37 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+plugin=(... zsh-completions)
+autoload -U compinit && compinit
 
+PROMPT='%n@%F{yellow}%m%f:
+%F{magenta}%~%f
+$ '
 
-PROMPT="%{${fg[white]}%}%n@%{${fg[yellow]}%}%m%{${fg[white]}%}
-[%{${fg[green]}%}%~%{${fg[white]}%}]
-$ "
+source ~/.zplug/init.zsh
+zplug "b4b4r07/enhancd", use:"init.sh"
+
+if ! zplug check --verbose; then
+    printf "install? [y/N]: "
+    if read -q; then
+	echo; zplug install
+    fi
+fi
+
+zplug load
+
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+if ! zplug check --verbose; then
+    printf "install? [y/N]: "
+    if read -q; then
+	echo; zplug install
+    fi
+fi
+
+zplug load
+
+# source ~/enhancd/init.sh
+alias explorer="explorer.exe"
+alias ls="ls -l"
+alias cmd="cmd.exe"
